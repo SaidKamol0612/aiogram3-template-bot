@@ -13,6 +13,7 @@ This project is a template for quickly building Telegram bots using the aiogram 
 1. Clone the repository.
 2. Install dependencies: `pip install -r requirements.txt`.
 3. Set your bot token and configuration settings.
-4. Run the bot: `python bot.py`.
+4. Open directory: `cd .\src\`.
+5. Run the bot: `python run.py`.
 
 This template is suitable for both beginners and experienced developers who want to quickly set up a Telegram bot and focus on building its functionality.
