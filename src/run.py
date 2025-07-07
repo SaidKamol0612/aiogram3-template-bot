@@ -9,11 +9,11 @@ from aiogram.enums.parse_mode import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-from app.core.config import settings
+from core.config import settings
 
-from app.db.helper import db_helper
+from core.db import db_helper
 
-from app.handlers import main_router
+from handlers import main_router
 
 dispatcher = Dispatcher()
 

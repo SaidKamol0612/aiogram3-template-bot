@@ -4,4 +4,4 @@ __all__ = (
 )
 
 from .helper import db_helper
-from .models import Base
+from .models.base import Base
