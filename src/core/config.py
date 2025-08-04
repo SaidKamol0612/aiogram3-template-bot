@@ -1,7 +1,16 @@
+import logging
+
+from typing import Literal
+
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ENV_PATH = ".env"
+
+LOG_DEFAULT_FORMAT = (
+    "[%(asctime)s.%(msecs)03d] %(module)10s:%(lineno)-3d %(levelname)-7s - %(message)s"
+)
+LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
 class BotSettings(BaseModel):
@@ -16,6 +25,23 @@ class DataBaseSettings(BaseModel):
     max_overflow: int = 10
 
 
+class LoggingConfig(BaseModel):
+    log_level: Literal[
+        "debug",
+        "info",
+        "warning",
+        "error",
+        "critical",
+    ] = "info"
+    log_format: str = LOG_DEFAULT_FORMAT
+    log_date_format: str = LOG_DATE_FORMAT
+    log_file: str = "bot.log"
+
+    @property
+    def log_level_value(self) -> int:
+        return logging.getLevelNamesMapping()[self.log_level.upper()]
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=ENV_PATH,
@@ -26,6 +52,7 @@ class Settings(BaseSettings):
 
     bot: BotSettings
     db: DataBaseSettings
+    logging: LoggingConfig = LoggingConfig()
 
 
 settings = Settings()
