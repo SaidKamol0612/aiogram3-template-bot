@@ -44,6 +44,9 @@ This project is a template for quickly building Telegram bots using the **aiogra
 
    ```bash
    # .\venv\Scripts\activate
+   .\run.bat # for Windows
+
+   # or
    cd src
    python run.py
    ```
