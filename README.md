@@ -1,4 +1,4 @@
-# Fast Telegram Bot Starter (aiogram 3.0)
+# Template for Aiogram3 (aiogram 3.0)
 
 This project is a template for quickly building Telegram bots using the **aiogram 3.0** framework. It provides a ready-made structure that allows developers to get started quickly with handling basic commands, asynchronous tasks, and interacting with the Telegram API.
 
