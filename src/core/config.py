@@ -1,6 +1,6 @@
 import logging
 
-from typing import Literal
+from typing import Literal, List, Tuple
 
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -23,6 +23,19 @@ class DataBaseSettings(BaseModel):
     echo_pool: bool = False
     pool_size: int = 50
     max_overflow: int = 10
+
+
+class RequiredLinkSettings(BaseModel):
+    open_links_str: str  # for example: "@my_channel,@my_group"
+    closed_links_str: str  # for example: "-100123456789"
+
+    @property
+    def links_id(self) -> Tuple[List[str], List[str]]:
+        open_links = [c.strip() for c in self.open_links_str.split(",") if c.strip()]
+        closed_links = [
+            c.strip() for c in self.closed_links_str.split(",") if c.strip()
+        ]
+        return open_links, closed_links
 
 
 class LoggingConfig(BaseModel):
@@ -52,6 +65,7 @@ class Settings(BaseSettings):
 
     bot: BotSettings
     db: DataBaseSettings
+    required_links: RequiredLinkSettings
     logging: LoggingConfig = LoggingConfig()
 
 

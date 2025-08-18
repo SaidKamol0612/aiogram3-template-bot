@@ -2,7 +2,7 @@ import logging
 import asyncio
 
 from bot import start_bot
-from core import settings
+from core.config import settings
 from core.db import db_helper
 
 
@@ -11,8 +11,8 @@ async def run():
 
     try:
         await start_bot()
-    except:
-        print("Bot stopped.")
+    except Exception as e:
+        logging.warning(f"Bot stopped with Exception {e}")
     finally:
         await db_helper.dispose()
 
