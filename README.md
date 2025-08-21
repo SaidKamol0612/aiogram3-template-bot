@@ -172,4 +172,4 @@ All settings are located in `core/config.py` using **Pydantic BaseSettings**:
 
 ## 📜 License
 
-MIT License © \[Your Name]
+MIT License © \Mirsaidov Saidkamol
