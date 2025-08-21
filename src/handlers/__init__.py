@@ -2,22 +2,16 @@ __all__ = ("router",)
 
 from aiogram import Router
 
-from middlewares import (
-    SubscriptionMiddleware,
-    GroupChannelChatOnlyMiddleware,
-    PrivateChatOnlyMiddleware,
-)
+# Import the sub-router from handler
+from .personal import router as personal_router
 
-from .public_chat import router as public_router
-from .personal_chat import router as personal_router
-
-sub = SubscriptionMiddleware()
+# -------------------------------
+# Initialize main router
+# -------------------------------
 router = Router()
 
-public_router.message.middleware(GroupChannelChatOnlyMiddleware())
-router.include_router(public_router)
 
-personal_router.message.middleware(PrivateChatOnlyMiddleware())
-personal_router.message.middleware(sub)
-personal_router.callback_query.middleware(sub)
+# -------------------------------
+# Include sub-router with actual handlers
+# -------------------------------
 router.include_router(personal_router)
