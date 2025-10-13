@@ -1,4 +1,4 @@
-# Telegram Bot Template (Aiogram 3)
+# Aiogram3 template bot
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Aiogram](https://img.shields.io/badge/aiogram-3.0-green)
@@ -10,69 +10,6 @@ A scalable **Telegram bot template** built with **Aiogram 3**, featuring:
 - Middleware for private and group chats
 - Subscription system with open/closed channels
 - Clean project structure ready for production
-
----
-
-## 📂 Project Structure
-
-```
-src/
-├─ core/
-│  ├─ __init__.py
-│  └─ config.py
-├─ db/
-│  ├─ crud/
-│  │  ├─ __init__.py
-│  │  ├─ base.py
-│  │  ├─ user_crud.py
-│  │  └─ subscription_crud.py
-│  ├─ models/
-│  │  ├─ __init__.py
-│  │  ├─ base.py
-│  │  ├─ user.py
-│  │  └─ subscription.py
-│  ├─ schemas/
-│  │  ├─ __init__.py
-│  │  ├─ user_schema.py
-│  │  └─ subscription_schema.py
-│  ├─ __init__.py
-│  └─ helper.py
-├─ handlers/
-│  ├─ personal/
-│  │  ├─ __init__.py
-│  │  └─ handler.py
-│  └─ __init__.py
-├─ keyboards/
-│  ├─ inline/
-│  │  ├─ __init__.py
-│  │  └─ kb.py
-│  └─ reply/
-│     ├─ __init__.py
-│     └─ kb.py
-├─ middlewares/
-│  ├─ __init__.py
-│  └─ chat_type.py
-├─ states/
-│  ├─ __init__.py
-│  └─ bot_state.py
-├─ utils/
-│  ├─ __init__.py
-│  ├─ case_converter.py
-│  ├─ load.py
-│  ├─ request.py
-│  ├─ requests.json
-│  └─ sub_check.py
-├─ .env            # create and fill
-├─ .env.template
-├─ bot.log         # creates after run
-├─ bot.py
-├─ db.sqlite3      # creates after run
-└─ run.py
-.gitignore
-README.md
-requirements.txt
-run.bat
-```
 
 ---
 
