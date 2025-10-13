@@ -1,10 +1,8 @@
 from sqlalchemy.orm import (
     DeclarativeBase,
     declared_attr,
-    Mapped,
-    mapped_column,
 )
-from utils.case_converter import camel_case_to_snake_case
+from core.utils import camel_case_to_snake_case
 
 
 class Base(DeclarativeBase):
@@ -28,10 +26,3 @@ class Base(DeclarativeBase):
             UserProfile -> user_profiles
         """
         return f"{camel_case_to_snake_case(cls.__name__)}s"
-
-    # Common primary key column for all models
-    id: Mapped[int] = mapped_column(
-        primary_key=True,
-        autoincrement=True,
-        nullable=False
-    )
