@@ -1,6 +1,7 @@
-from aiogram.types import Message
-from aiogram.dispatcher.middlewares.base import BaseMiddleware
 from typing import Callable, Dict, Any, Awaitable
+
+from aiogram.dispatcher.middlewares.base import BaseMiddleware
+from aiogram.types import Message
 
 
 class PrivateChatOnlyMiddleware(BaseMiddleware):
@@ -15,13 +16,9 @@ class PrivateChatOnlyMiddleware(BaseMiddleware):
         event: Message,
         data: Dict[str, Any],
     ) -> Any:
-        # Check if chat type is private
         if event.chat.type != "private":
-            await event.answer(
-                "⚠️ Bu buyruq faqat shaxsiy suhbatda ishlaydi."
-            )  # Warning message
-            return  # Stop processing
-        # Continue to handler if in private chat
+            await event.answer("⚠️ Bu buyruq faqat shaxsiy suhbatda ishlaydi.")
+            return
         return await handler(event, data)
 
 
@@ -37,11 +34,7 @@ class GroupChannelChatOnlyMiddleware(BaseMiddleware):
         event: Message,
         data: Dict[str, Any],
     ) -> Any:
-        # Check if chat type is group, supergroup, or channel
         if event.chat.type not in ("group", "supergroup", "channel"):
-            await event.answer(
-                "⚠️ Bu buyruq faqat guruhlarda ishlaydi."
-            )  # Warning message
-            return  # Stop processing
-        # Continue to handler if in group/channel
+            await event.answer("⚠️ Bu buyruq faqat guruhlarda ishlaydi.")
+            return
         return await handler(event, data)
