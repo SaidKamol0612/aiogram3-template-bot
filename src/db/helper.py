@@ -40,12 +40,12 @@ class DatabaseHelper:
         async with self.engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
 
-    async def dispose(self) -> None:
-        await self.engine.dispose()
-
     async def session_getter(self) -> AsyncGenerator[AsyncSession, None]:
         async with self.session_factory() as session:
             yield session
+
+    async def dispose(self) -> None:
+        await self.engine.dispose()
 
 
 db_helper = DatabaseHelper(
