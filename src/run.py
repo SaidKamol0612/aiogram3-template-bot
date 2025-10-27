@@ -25,7 +25,7 @@ async def run_bot():
 
 if __name__ == "__main__":
     logging.basicConfig(
-        filename=settings.logging.log_file if not settings.debug else None,
+        filename=settings.logging.log_file if not settings.DEBUG else None,
         format=settings.logging.log_format,
         datefmt=settings.logging.log_date_format,
         level=settings.logging.log_level_value,
