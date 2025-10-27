@@ -44,13 +44,13 @@ class LoggingConfig(BaseModel):
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         case_sensitive=False,
-        env_prefix="BOT_CONFIG__",
+        env_prefix="CONFIG__",
         env_file=(BASE_DIR / ".env"),
         env_nested_delimiter="__",
     )
 
     # NOTE: don't run with debug turned on in production!
-    debug: bool = True
+    DEBUG: bool = True
 
     bot: BotSettings
     db: DataBaseSettings
