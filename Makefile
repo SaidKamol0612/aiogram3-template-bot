@@ -1,4 +1,3 @@
-# Makefile for LekosEPR-API
 # Usage examples:
 # * make build — install dependencies and apply migrations
 # * make run — launch the application
@@ -26,14 +25,14 @@ build:
 # Run project
 # -----------------------------
 run:
-	@echo "▶️  Starting LekosEPR-API..."
+	@echo "▶️  Starting Aiogram3-Template-Bot..."
 	PYTHONPATH=src poetry run python -m src.run
 
 # -----------------------------
 # Deploy (build + run)
 # -----------------------------
 deploy:
-	@echo "🚀 Deploying LekosEPR-API..."
+	@echo "🚀 Deploying Aiogram3-Template-Bot..."
 	$(MAKE) build
 	$(MAKE) run
 
