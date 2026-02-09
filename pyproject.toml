@@ -1,22 +1,20 @@
 [project]
 name = "aiogram3-template-bot"
 version = "0.1.0"
-description = "Template tg bot built with Aiogram version 3."
-authors = [
-    {name = "Saidkamol Mirsaidov",email = "kamolsaid2006@gmail.com"}
-]
+description = "Template Telegram bot built with Aiogram version 3."
+authors = [{ name = "Saidkamol Mirsaidov", email = "kamolsaid2006@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.9,<=3.13"
 dependencies = [
     "aiogram (>=3.22.0,<4.0.0)",
     "pydantic-settings (>=2.11.0,<3.0.0)",
     "sqlalchemy (>=2.0.44,<3.0.0)",
-    "aiosqlite (>=0.21.0,<0.22.0)"
+    "aiosqlite (>=0.21.0,<0.22.0)",
 ]
 
 
 [tool.poetry]
-package-mode = false
+packages = [{ include = "*", from = "src" }]
 
 
 [build-system]
