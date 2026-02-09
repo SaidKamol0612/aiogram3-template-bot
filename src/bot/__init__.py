@@ -1,3 +1,7 @@
-__all__ = ("start_bot",)
+__all__ = (
+    "create_bot",
+    "create_dispatcher",
+)
 
-from .start_bot import main
+
+from .start import create_bot, create_dispatcher
