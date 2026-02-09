@@ -10,4 +10,7 @@ router = Router()
 
 @router.message(F.text, BotState.START)
 async def echo(message: Message, state: FSMContext):
-    await message.send_copy(message.from_user.id)
+    if message.from_user is None:
+        return
+
+    return message.send_copy(message.from_user.id)
