@@ -1,46 +1,27 @@
-# Usage examples:
-# * make build — install dependencies and apply migrations
-# * make run — launch the application
-# * make deploy — build and launch from a clean state
+.PHONY: clean build run
 
-.PHONY: migrate build run deploy clean
 
-# -----------------------------
-# Migrations
-# -----------------------------
-# migrate:
-# 	@echo "🚀 Running database migrations..."
-# 	cd src && poetry run alembic upgrade head
+TITLE = Aiogram3TemplateBot
+POETRY := $(shell which poetry)
 
-# -----------------------------
-# Building application
-# -----------------------------
-build:
-	@echo "📦 Installing dependencies..."
-	poetry install
-# 	$(MAKE) migrate
-	@echo "✅ Build complete."
 
-# -----------------------------
-# Run project
-# -----------------------------
-run:
-	@echo "▶️  Starting Aiogram3-Template-Bot..."
-	PYTHONPATH=src poetry run python -m src.run
-
-# -----------------------------
-# Deploy (build + run)
-# -----------------------------
-deploy:
-	@echo "🚀 Deploying Aiogram3-Template-Bot..."
-	$(MAKE) build
-	$(MAKE) run
-
-# -----------------------------
-# Clean temporary files
-# -----------------------------
 clean:
 	@echo "🧹 Cleaning cache and temporary files..."
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	rm -rf .pytest_cache .mypy_cache dist build
 	@echo "✅ Clean complete."
+
+
+# migrate:
+# 	@echo "🚀 Running database migrations..."
+# 	cd src && poetry run alembic upgrade head
+
+
+build:
+	$(MAKE) clean
+	$(POETRY) install
+# 	$(MAKE) migrate
+
+
+run:
+	$(POETRY) run python -m src.main
