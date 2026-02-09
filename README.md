@@ -13,34 +13,14 @@ A scalable **Telegram bot template** built with **Aiogram 3**, featuring:
 
 ---
 
-## ⚡ Features
-
-- **Async CRUD**
-  BaseCRUD supports `create`, `read`, `read_all`, `update`, `delete` with SQLAlchemy + Pydantic schemas.
-
-- **FSM support**
-  Handle multi-step conversations easily using Aiogram FSM.
-
-- **Middleware**
-  Restrict certain commands to private chats or groups/channels.
-
-- **Subscription system**
-
-  - Open subscriptions: user must be a member
-  - Closed subscriptions: bot generates join request links automatically
-
-- **Graceful shutdown**
-  Ensures DB sessions and bot polling are properly closed on `Ctrl+C` or exceptions.
-
----
 
 ## 🛠 Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/SaidKamol0612/Template-Aiogram3-Bot.git
-cd Template-Aiogram3-Bot
+git clone https://github.com/SaidKamol0612/aiogram3-template-bot.git
+cd aiogram3-template-bot
 ```
 
 2. Create a virtual environment:
@@ -51,18 +31,32 @@ source .venv/bin/activate   # Linux / Mac
 .venv\Scripts\activate      # Windows
 ```
 
-3. Install dependencies:
+2.1. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
+
+2.2 Or install dependencies via Poetry:
+
+```bash
+make build
+```
+
 4. Configure environment variables:
 
-```text
-# .env
+Copy `.env.template`:
+
+```bash
+cp .env.template .env.dev
+```
+
+Fill variables:
+
+```env
 BOT__BOT__TOKEN=<your_telegram_bot_token>
-BOT__DB__URL=sqlite+aiosqlite:///./database.db
+BOT__DB__URL=sqlite+aiosqlite:///db.sqlite3
 ```
 
 ---
@@ -70,23 +64,15 @@ BOT__DB__URL=sqlite+aiosqlite:///./database.db
 ## 🚀 Running the Bot
 
 ```bash
-run.bat
+make run
 # or
-python src/run.py
+python -m src.main
 ```
 
 The bot will initialize the database and start polling.
 
 ---
 
-## 📦 Usage
-
-- Add users and subscriptions via CRUD classes (`UserCRUD`, `SubscriptionCRUD`).
-- Use FSM for multi-step commands.
-- Middleware ensures commands are executed in the correct chat type.
-- `get_unsubscribed_chat_links(user_id, bot)` helps manage subscription checks automatically.
-
----
 
 ## ⚙️ Settings
 
